@@ -54,7 +54,7 @@ project=$(getprop ro.boot.prj_version)
 echo "Running unified/variant script with $project..." >> /tmp/recovery.log
 
 case $project in
-    20828)
+    20828|20838)
         load_op9r
         ;;
     *)
