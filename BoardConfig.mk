@@ -56,6 +56,7 @@ BOARD_KERNEL_CMDLINE := \
     androidboot.memcg=1 \
     androidboot.usbcontroller=a600000.dwc3 \
     androidboot.selinux=permissive \
+    firmware_class.path=/vendor/firmware_mnt/image \
     lpm_levels.sleep_disabled=1 \
     msm_rtb.filter=0x237 \
     service_locator.enable=1 \
@@ -156,12 +157,12 @@ TW_INCLUDE_CRYPTO_FBE := true
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
 BOARD_USES_METADATA_PARTITION := true
 BOARD_USES_QCOM_FBE_DECRYPTION := true
+TW_USE_FSCRYPT_POLICY := 2
 
 # Extras
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TW_INCLUDE_RESETPROP := true
 TW_INCLUDE_REPACKTOOLS := false
-TW_INCLUDE_FASTBOOTD := true
 
 # TWRP specific build flags
 TARGET_RECOVERY_QCOM_RTC_FIX := true
@@ -175,10 +176,10 @@ TW_H_OFFSET := -104
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_EXCLUDE_ENCRYPTED_BACKUPS := false
 TW_EXCLUDE_TWRPAPP := true
+TW_INCLUDE_FASTBOOTD := true
 TW_EXTRA_LANGUAGES := true
 TW_HAS_EDL_MODE := true
 TW_INCLUDE_NTFS_3G := true
-TW_INCLUDE_EROFS := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_NO_SCREEN_BLANK := true
 TW_EXCLUDE_APEX := true
@@ -208,4 +209,3 @@ TWRP_INCLUDE_LOGCAT := true
 TARGET_RECOVERY_DEVICE_MODULES += debuggerd
 TW_RECOVERY_ADDITIONAL_RELINK_FILES += $(TARGET_OUT_EXECUTABLES)/debuggerd
 BOARD_RAMDISK_USE_LZMA := true
-BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
