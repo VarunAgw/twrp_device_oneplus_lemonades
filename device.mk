@@ -1,5 +1,6 @@
 # Inherit from common AOSP config
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
@@ -15,6 +16,9 @@ LOCAL_PATH := device/oneplus/lemonades
 #SHIPPING API
 PRODUCT_SHIPPING_API_LEVEL := 30
 
+#VNDK API
+PRODUCT_TARGET_VNDK_VERSION := 31
+
 # define hardware platform
 PRODUCT_PLATFORM := kona
 
@@ -26,12 +30,14 @@ AB_OTA_UPDATER := true
 # more partitions to this list for the bootloader and radio.
 AB_OTA_PARTITIONS += \
     boot \
-	dtbo \
+    dtbo \
     system \
     system_ext \
+    product \
+    odm \
     vendor \
     vbmeta \
-	vbmeta_system
+    vbmeta_system
 
 PRODUCT_PACKAGES += \
     otapreopt_script \
